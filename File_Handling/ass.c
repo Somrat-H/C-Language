@@ -9,8 +9,18 @@ int main()
 {   
     char a;
     int count = 0;
+    char x[100] = " ";
+    
+    int fd2 = open("/home/somrat/Documents/C_Code/File_Handling/top.txt", O_WRONLY);
 
-    int fd = open("/home/somrat/Documents/C_Code/file_handling/ass.txt", O_RDWR);
+    printf("Enter your sentence: ");
+    scanf("%s", &x);
+
+    write(fd2, &x, 100);
+    
+    close(fd2);
+
+    int fd = open("/home/somrat/Documents/C_Code/File_Handling/top.txt", O_RDONLY);
 
     read(fd, &a, 1);
 
@@ -22,7 +32,9 @@ int main()
         read(fd, &a, 1);
     }
 
-    printf("\nThe totall number of word and character of the file : %d\n", count);
+   // printf("\nThe totall number of word and character of the file : %d\n", count);
+
+    close(fd);
 
 }
 // /home/somrat/Documents/C_Code/file_handling/ass.txt
